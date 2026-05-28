@@ -5,7 +5,7 @@ import Register from '../forms/Register.vue'
 
 import Home from '../pages/Home.vue'
 import Shop from '../pages/Shop.vue'
-import Contact from '../pages/Contect.vue'
+import Contact from '../pages/Contact.vue'
 import Categories from '../pages/Categories.vue'
 import CardDetail from '../pages/CardDetail.vue'
 
