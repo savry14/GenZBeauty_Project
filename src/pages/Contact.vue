@@ -3,7 +3,7 @@
     <div class="mx-auto max-w-7xl px-6 py-12 lg:px-8">
       <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
         <section
-          class="overflow-hidden rounded-[2rem] bg-[#c9184a] text-white shadow-2xl"
+          class="overflow-hidden rounded-[2rem] bg-pink-400 text-white shadow-2xl"
         >
           <div class="relative h-full p-8 sm:p-10">
             <div class="absolute right-0 top-0 h-40 w-40 rounded-full bg-white/10 blur-2xl"></div>
@@ -83,6 +83,7 @@
                   class="w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 outline-none transition focus:border-pink-400 focus:bg-white focus:ring-4 focus:ring-pink-100"
                 />
               </div>
+
 
               <div>
                 <label class="mb-2 block text-sm font-semibold text-gray-700" for="email">
