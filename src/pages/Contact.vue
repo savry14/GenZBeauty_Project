@@ -1,19 +1,19 @@
 <template>
   <div class="min-h-screen bg-gradient-to-br from-pink-50 via-rose-50 to-amber-50">
-    <div class="mx-auto max-w-7xl px-6 py-12 lg:px-8">
+    <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
       <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
         <section
           class="overflow-hidden rounded-[2rem] bg-pink-400 text-white shadow-2xl"
         >
-          <div class="relative h-full p-8 sm:p-10">
+          <div class="relative h-full p-6 sm:p-8 lg:p-10">
             <div class="absolute right-0 top-0 h-40 w-40 rounded-full bg-white/10 blur-2xl"></div>
             <div class="absolute bottom-0 left-0 h-56 w-56 rounded-full bg-black/10 blur-3xl"></div>
 
             <p class="mb-4 inline-flex rounded-full bg-white/15 px-4 py-1 text-sm font-medium tracking-wide">
-              Let’s talk skincare
+              Let&apos;s talk skincare
             </p>
 
-            <h1 class="max-w-md text-4xl font-black leading-tight sm:text-5xl">
+            <h1 class="max-w-md text-3xl font-black leading-tight sm:text-4xl lg:text-5xl">
               We would love to hear from you
             </h1>
 
@@ -56,7 +56,7 @@
           </div>
         </section>
 
-        <section class="rounded-[2rem] bg-white p-8 shadow-2xl sm:p-10">
+        <section class="rounded-[2rem] bg-white p-6 shadow-2xl sm:p-8 lg:p-10">
           <div class="mb-8">
             <p class="text-sm font-semibold uppercase tracking-[0.2em] text-pink-500">
               Contact Form
@@ -65,7 +65,7 @@
               Send us a message
             </h2>
             <p class="mt-3 max-w-xl text-gray-600">
-              Fill out the form and we’ll get back to you as soon as possible.
+              Fill out the form and we&apos;ll get back to you as soon as possible.
             </p>
           </div>
 
@@ -83,7 +83,6 @@
                   class="w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 outline-none transition focus:border-pink-400 focus:bg-white focus:ring-4 focus:ring-pink-100"
                 />
               </div>
-
 
               <div>
                 <label class="mb-2 block text-sm font-semibold text-gray-700" for="email">
@@ -145,23 +144,23 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive } from "vue";
 
 const form = reactive({
-  fullName: '',
-  email: '',
-  subject: '',
-  message: ''
-})
+  fullName: "",
+  email: "",
+  subject: "",
+  message: "",
+});
 
 const handleSubmit = () => {
-  console.log('Contact form submitted:', { ...form })
+  console.log("Contact form submitted:", { ...form });
 
-  form.fullName = ''
-  form.email = ''
-  form.subject = ''
-  form.message = ''
+  form.fullName = "";
+  form.email = "";
+  form.subject = "";
+  form.message = "";
 
-  alert('Thanks! Your message has been prepared for submission.')
-}
+  alert("Thanks! Your message has been prepared for submission.");
+};
 </script>

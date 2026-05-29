@@ -1,41 +1,41 @@
 <template>
-  <div class="w-full h-auto lg:px-24 md:px-6 px-4 py-10 bg-pink-200">
+  <div class="w-full h-auto bg-pink-200 px-4 py-10 md:px-6 lg:px-24">
     <!-- title -->
-    <div class="flex justify-between items-center">
-      <h1 class="font-bold text-3xl">Product List</h1>
+    <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <h1 class="text-2xl font-bold sm:text-3xl">Product List</h1>
 
       <button
         @click="showAll = !showAll"
-        class="cursor-pointer shadow-xl rounded-xl px-3 py-2 hover:bg-pink-600 hover:text-white"
+        class="w-fit cursor-pointer rounded-xl px-3 py-2 shadow-xl hover:bg-pink-600 hover:text-white"
       >
         {{ showAll ? "Show Less" : "View All" }}
       </button>
     </div>
 
     <!-- main card -->
-    <div class="w-full h-auto pt-16 flex flex-wrap gap-6">
+    <div class="flex w-full flex-wrap gap-6 pt-10 sm:pt-16">
       <!-- card -->
       <div
         v-for="item in visibleProducts"
         :key="item.id"
-        class="w-full md:w-[48%] lg:w-[23%] h-[490px] rounded-xl border bg-white border-none transition-transform duration-200 hover:scale-105"
+        class="flex w-full flex-col overflow-hidden rounded-xl border-none bg-white transition-transform duration-200 hover:scale-105 sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]"
       >
         <!-- card-header -->
-        <div class="w-full h-[60%]">
+        <div class="aspect-[4/3] w-full">
           <img
-            class="w-full h-full object-cover rounded-lg"
+            class="h-full w-full rounded-lg object-cover"
             :src="item.image"
             :alt="item.name"
           />
         </div>
         <!-- card-body -->
-        <div class="w-full h-[40%] p-3">
+        <div class="flex flex-1 flex-col p-3">
           <h1 class="font-semibold text-xl line-clamp-1">{{ item.name }}</h1>
           <p class="py-1 line-clamp-2">
             {{ item.description }}
           </p>
           <p class="text-xl text-green-800">${{ item.price }}</p>
-          <router-link :to="`/products/${item.id}`">
+          <router-link :to="`/products/${item.id}`" class="mt-auto pt-3">
             <button
               class="bg-blue-500 hover:bg-blue-600 text-white text-lg py-2 mt-2 w-full rounded-xl cursor-pointer"
             >
@@ -46,18 +46,16 @@
       </div>
     </div>
 
-    <div
-      class="w-full h-auto bg-pink-300 mt-10 shadow-xl py-7 px-10 rounded-3xl"
-    >
+    <div class="mt-10 h-auto w-full rounded-3xl bg-pink-300 px-4 py-7 shadow-xl sm:px-6 lg:px-10">
       <!-- maincard -->
-      <div class="w-full py-7">
+      <div class="w-full py-4 sm:py-7">
         <!-- card -->
-        <div class="w-full flex justify-between">
+        <div class="flex w-full flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
           <!-- left -->
-          <div class="font-bold w-[35%]">
+          <div class="w-full font-bold lg:w-[35%]">
             <p>Glow Every Day</p>
-            <h1 class="text-4xl">Skincare That</h1>
-            <h1 class="text-4xl">
+            <h1 class="text-3xl sm:text-4xl">Skincare That</h1>
+            <h1 class="text-3xl sm:text-4xl">
               <mark class="bg-pink-300 text-pink-600">Loves</mark> You Back
             </h1>
             <p class="py-2">
@@ -71,19 +69,23 @@
             </button>
           </div>
           <!-- center -->
-          <div class="w-[50%]">
+          <div class="w-full lg:w-[50%]">
             <img
-              class="w-full rounded-2xl h-70"
+              class="h-56 w-full rounded-2xl object-cover sm:h-72 lg:h-70"
               src="/src/assets/image/categories/image.jpeg"
               alt=""
             />
           </div>
           <!-- right -->
-          <div class="w-[30%] pl-40">
-            <h1 class="font-bold text-4xl text-pink-600">10K+</h1>
-            <p>Happy Customers</p>
-            <h1 class="pt-12 text-4xl font-bold text-pink-600">4.8</h1>
-            <p>Average Rating</p>
+          <div class="grid w-full grid-cols-2 gap-4 lg:w-[30%] lg:grid-cols-1 lg:pl-10 xl:pl-40">
+            <div>
+              <h1 class="text-3xl font-bold text-pink-600 sm:text-4xl">10K+</h1>
+              <p>Happy Customers</p>
+            </div>
+            <div>
+              <h1 class="text-3xl font-bold text-pink-600 sm:pt-12 sm:text-4xl">4.8</h1>
+              <p>Average Rating</p>
+            </div>
           </div>
         </div>
       </div>
@@ -92,13 +94,29 @@
 </template>
 
 <script setup>
+import { computed, ref } from "vue";
+import { useRoute } from "vue-router";
 
-import { ref, computed } from "vue";
+const route = useRoute();
 
 const showAll = ref(false);
 
+const searchTerm = computed(() => {
+  const value = route.query.search;
+  return typeof value === "string" ? value.trim().toLowerCase() : "";
+});
+
 const visibleProducts = computed(() => {
-  return showAll.value ? products : products.slice(0, 4);
+  const filteredProducts = searchTerm.value
+    ? products.filter((item) => {
+        return (
+          item.name.toLowerCase().includes(searchTerm.value) ||
+          item.description.toLowerCase().includes(searchTerm.value)
+        );
+      })
+    : products;
+
+  return showAll.value ? filteredProducts : filteredProducts.slice(0, 4);
 });
 
 const products = [
