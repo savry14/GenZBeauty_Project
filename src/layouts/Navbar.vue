@@ -15,49 +15,18 @@
     <div
       class="flex w-full items-center justify-between gap-3 bg-pink-300 px-4 py-2 shadow-lg md:px-8 lg:px-10"
     >
-      <button
-        type="button"
-        class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-pink-400 bg-white/70 text-gray-800 shadow-sm lg:hidden"
-        @click="toggleMobileMenu"
-        :aria-expanded="isMobileMenuOpen"
-        aria-label="Toggle navigation menu"
-      >
-        <svg
-          v-if="!isMobileMenuOpen"
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-        <svg
-          v-else
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
-
       <router-link to="/home" class="flex items-center gap-2">
         <img
           class="h-12 w-12 rounded-full object-cover sm:h-14 sm:w-14"
           src="/src/assets/image/hero/logo.png"
           alt="GENZ-BEUTY logo"
         />
-        <span class="text-lg font-bold text-black sm:text-xl md:text-3xl">
+        <span class="text-lg font-bold text-black sm:text-xl md:text-2xl">
           GENZ-BEAUTY
         </span>
       </router-link>
 
-      <ul class="hidden items-center gap-6 lg:flex">
+      <ul class="hidden items-center gap-10 lg:ml-16 lg:flex xl:ml-24">
         <li
           v-for="item in menu"
           :key="item.name"
@@ -116,6 +85,44 @@
             {{ count }}
           </span>
         </button>
+        <button
+          type="button" 
+          class="inline-flex h-11 w-11 items-center justify-center  shadow-sm lg:hidden"
+          @click="toggleMobileMenu"
+          :aria-expanded="isMobileMenuOpen"
+          aria-label="Toggle navigation menu"
+        >
+          <svg
+            v-if="!isMobileMenuOpen"
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+          <svg
+            v-else
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
 
         <router-link
           to="/login"
@@ -171,7 +178,10 @@
       v-if="isSearchOpen"
       class="absolute left-0 top-full w-full border-t border-pink-200 bg-pink-300 px-4 pb-4 pt-3 shadow-lg md:px-8 lg:px-10"
     >
-      <form class="mx-auto flex w-full max-w-3xl flex-col gap-3 sm:flex-row" @submit.prevent="submitSearch">
+      <form
+        class="mx-auto flex w-full max-w-3xl flex-col gap-3 sm:flex-row"
+        @submit.prevent="submitSearch"
+      >
         <label class="sr-only" for="navbar-search">Search products</label>
         <input
           id="navbar-search"
@@ -201,10 +211,14 @@
         v-if="isCartOpen"
         class="absolute right-2 top-full mt-3 w-[calc(100vw-1rem)] max-w-md rounded-3xl border border-pink-100 bg-white p-4 shadow-2xl sm:right-4 sm:w-[92vw] md:right-8 lg:right-10"
       >
-        <div class="flex items-center justify-between border-b border-gray-100 pb-3">
+        <div
+          class="flex items-center justify-between border-b border-gray-100 pb-3"
+        >
           <div>
             <h2 class="text-lg font-bold text-gray-900">Bag Activity</h2>
-            <p class="text-sm text-gray-500">Recent add to cart and buy now actions</p>
+            <p class="text-sm text-gray-500">
+              Recent add to cart and buy now actions
+            </p>
           </div>
           <button
             type="button"
@@ -215,7 +229,10 @@
           </button>
         </div>
 
-        <div v-if="cartHistory.length === 0" class="py-8 text-center text-gray-500">
+        <div
+          v-if="cartHistory.length === 0"
+          class="py-8 text-center text-gray-500"
+        >
           No bag activity yet. Add a product to see it here.
         </div>
 
@@ -233,14 +250,20 @@
             <div class="min-w-0 flex-1">
               <div class="flex items-start justify-between gap-2">
                 <div class="min-w-0">
-                  <p class="truncate font-semibold text-gray-900">{{ entry.name }}</p>
+                  <p class="truncate font-semibold text-gray-900">
+                    {{ entry.name }}
+                  </p>
                   <p class="text-sm text-gray-600">{{ entry.action }}</p>
                 </div>
-                <span class="shrink-0 rounded-full bg-white px-2 py-1 text-xs font-bold text-pink-600">
+                <span
+                  class="shrink-0 rounded-full bg-white px-2 py-1 text-xs font-bold text-pink-600"
+                >
                   x{{ entry.quantity }}
                 </span>
               </div>
-              <div class="mt-2 flex items-center justify-between text-sm text-gray-500">
+              <div
+                class="mt-2 flex items-center justify-between text-sm text-gray-500"
+              >
                 <span>${{ entry.total }}</span>
                 <span>{{ entry.createdAt }}</span>
               </div>
@@ -294,7 +317,7 @@ watch(
   (value) => {
     searchQuery.value = typeof value === "string" ? value : "";
   },
-  { immediate: true }
+  { immediate: true },
 );
 
 const toggleSearch = () => {
@@ -304,7 +327,8 @@ const toggleSearch = () => {
     isMobileMenuOpen.value = false;
   }
   if (isSearchOpen.value) {
-    searchQuery.value = typeof route.query.search === "string" ? route.query.search : "";
+    searchQuery.value =
+      typeof route.query.search === "string" ? route.query.search : "";
   }
 };
 
@@ -326,10 +350,19 @@ const toggleMobileMenu = () => {
 
 const submitSearch = () => {
   const term = searchQuery.value.trim();
+  const nextQuery = term ? { search: term } : {};
+  const isSameRoute =
+    route.path === "/shop" &&
+    JSON.stringify(route.query) === JSON.stringify(nextQuery);
 
-  router.push({
+  if (isSameRoute) {
+    isSearchOpen.value = false;
+    return;
+  }
+
+  router.replace({
     path: "/shop",
-    query: term ? { search: term } : {},
+    query: nextQuery,
   });
 
   isSearchOpen.value = false;

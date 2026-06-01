@@ -34,7 +34,7 @@ export const bodyProducts = [
     description:
       'A lightweight antioxidant treatment that helps defend skin against daily environmental stress.',
     image:
-      'https://www.pinkavenueskincare.ca/cdn/shop/files/Pink_Avenue_Green_Tea_AOX_Serum_Toronto_Canada_flat_lay.png?v=1768236524&width=2048',
+      'https://arishbionatural.com/cdn/shop/files/green-tea-antioxidant-serum-504773.jpg?v=1749983360&width=480',
     price: 41.99,
   },
   {

@@ -10,15 +10,15 @@
       </router-link>
     </div>
 
-    <div class="flex w-full flex-wrap gap-6 pt-10 sm:gap-8">
+    <div class="flex w-full flex-wrap items-start gap-6 pt-10 sm:gap-8">
       <div
         v-for="item in products"
         :key="item.id"
         class="flex w-full flex-col overflow-hidden rounded-xl bg-white shadow-2xl sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)]"
       >
-        <div class="aspect-[4/3] w-full">
+        <div class="aspect-[4/3] w-full overflow-hidden">
           <img
-            class="h-full w-full object-cover"
+            class="block h-full w-full object-cover"
             :src="item.image"
             :alt="item.name"
           />

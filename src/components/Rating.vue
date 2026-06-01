@@ -9,7 +9,7 @@
       </button>
     </div>
     <!-- main card -->
-    <div class="flex w-full flex-wrap gap-6 pt-10 sm:pt-16">
+    <div class="flex w-full flex-wrap items-start gap-6 pt-10 sm:pt-16">
       <!-- card -->
       <div
         v-for="item in productsToShow"
@@ -17,9 +17,9 @@
         class="flex w-full flex-col overflow-hidden rounded-xl border-none bg-white transition-transform duration-200 hover:scale-105 sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]"
       >
         <!-- card-header -->
-        <div class="aspect-[4/3] w-full">
+        <div class="aspect-[4/3] w-full overflow-hidden">
           <img
-            class="h-full w-full rounded-lg object-cover"
+            class="block h-full w-full object-cover"
             :src="item.image"
             :alt="item.name"
           />

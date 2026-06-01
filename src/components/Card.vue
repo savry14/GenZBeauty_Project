@@ -1,7 +1,9 @@
 <template>
   <div class="w-full h-auto bg-pink-200 px-4 py-10 md:px-6 lg:px-24">
     <!-- title -->
-    <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+    <div
+      class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+    >
       <h1 class="text-2xl font-bold sm:text-3xl">Product List</h1>
 
       <button
@@ -13,7 +15,7 @@
     </div>
 
     <!-- main card -->
-    <div class="flex w-full flex-wrap gap-6 pt-10 sm:pt-16">
+    <div class="flex w-full flex-wrap items-start gap-6 pt-10 sm:pt-16">
       <!-- card -->
       <div
         v-for="item in visibleProducts"
@@ -21,9 +23,9 @@
         class="flex w-full flex-col overflow-hidden rounded-xl border-none bg-white transition-transform duration-200 hover:scale-105 sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]"
       >
         <!-- card-header -->
-        <div class="aspect-[4/3] w-full">
+        <div class="aspect-[4/3] w-full overflow-hidden">
           <img
-            class="h-full w-full rounded-lg object-cover"
+            class="block h-full w-full object-cover"
             :src="item.image"
             :alt="item.name"
           />
@@ -46,11 +48,15 @@
       </div>
     </div>
 
-    <div class="mt-10 h-auto w-full rounded-3xl bg-pink-300 px-4 py-7 shadow-xl sm:px-6 lg:px-10">
+    <div
+      class="mt-10 h-auto w-full rounded-3xl bg-pink-300 px-4 py-7 shadow-xl sm:px-6 lg:px-10"
+    >
       <!-- maincard -->
       <div class="w-full py-4 sm:py-7">
         <!-- card -->
-        <div class="flex w-full flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+        <div
+          class="flex w-full flex-col gap-6 lg:flex-row lg:items-center lg:justify-between"
+        >
           <!-- left -->
           <div class="w-full font-bold lg:w-[35%]">
             <p>Glow Every Day</p>
@@ -77,13 +83,17 @@
             />
           </div>
           <!-- right -->
-          <div class="grid w-full grid-cols-2 gap-4 lg:w-[30%] lg:grid-cols-1 lg:pl-10 xl:pl-40">
+          <div
+            class="grid w-full grid-cols-2 gap-4 lg:w-[30%] lg:grid-cols-1 lg:pl-10 xl:pl-40"
+          >
             <div>
               <h1 class="text-3xl font-bold text-pink-600 sm:text-4xl">10K+</h1>
               <p>Happy Customers</p>
             </div>
             <div>
-              <h1 class="text-3xl font-bold text-pink-600 sm:pt-12 sm:text-4xl">4.8</h1>
+              <h1 class="text-3xl font-bold text-pink-600 sm:pt-12 sm:text-4xl">
+                4.8
+              </h1>
               <p>Average Rating</p>
             </div>
           </div>
@@ -152,7 +162,7 @@ const products = [
     description:
       "A lightweight antioxidant serum with green tea EGCG and fermented extracts to protect skin from environmental stressors.",
     image:
-      "https://www.pinkavenueskincare.ca/cdn/shop/files/Pink_Avenue_Green_Tea_AOX_Serum_Toronto_Canada_flat_lay.png?v=1768236524&width=2048",
+      "https://arishbionatural.com/cdn/shop/files/green-tea-antioxidant-serum-504773.jpg?v=1749983360&width=480",
     price: 41.99,
   },
   {
